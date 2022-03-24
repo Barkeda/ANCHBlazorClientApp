@@ -1,0 +1,17 @@
+﻿@page "/Services"
+@inject HttpClient _httpClient
+
+
+<h3>Services</h3>
+
+Text File Output = @_textFileOutput
+
+@code {
+    private string? _textFileOutput;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _textFileOutput = await _httpClient.GetStringAsync("api/FileHandler");
+    }
+
+}
